@@ -1,18 +1,18 @@
 <?php 
 require 'funciones.php';
-
-$conexion = conexion('tiendash1', 'root', '');
+$func = new Funciones();
+$conexion = $func->conexion('tiendash1', 'root', '');
 
 if (!$conexion) {
 	die();
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-	$nombre = limpiarDatos($_POST['nombre']);
-	$apellido = limpiarDatos($_POST['apellido']);
-	$email = limpiarDatos($_POST['email']);
-	$tarjeta = limpiarDatos($_POST['tarjeta']);
-	$contrasena = limpiarDatos($_POST['contrasena']);
+	$nombre = $func->limpiarDatos($_POST['nombre']);
+	$apellido = $func->limpiarDatos($_POST['apellido']);
+	$email = $func->limpiarDatos($_POST['email']);
+	$tarjeta = $func->limpiarDatos($_POST['tarjeta']);
+	$contrasena = $func->limpiarDatos($_POST['contrasena']);
 
 /*	$statement = $conexion->prepare('
 		INSERT INTO usuarios (nombre, apellido, email, tarjeta, contrasena)
