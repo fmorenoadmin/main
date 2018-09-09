@@ -62,7 +62,9 @@ CREATE TABLE usuarios
 	contrasenia_u varchar(30) not null,
 	fecha_nac_u date not null,
 	telefono_u varchar(15) not null,
-	direccion_u varchar(500) not null
+	direccion_u varchar(500) not null,
+	foto_u varchar(500) null,
+	estado_u smallint not null
 );
 
 CREATE TABLE registro_ing
@@ -116,9 +118,9 @@ Creación de los procedimientos almacenados
 	 		contra varchar(30)
 	 	)
 		SELECT u.id_usuario, u.id_tipo, tu.nombre_tipo, u.nombres_u, u.apellidos_u, u.usuario_u, u.correo_u, u.contrasenia_u, u.fecha_nac_u, 
-			u.telefono_u, u.direccion_u
+			u.telefono_u, u.direccion_u, u.foto_u, u.estado_u
 		FROM usuarios u inner join tipo_usuario tu on id_tipo like id_tipo
-		WHERE ( correo_u like usuario or usuario_u like usuario ) and contrasenia_u like contra
+		WHERE ( correo_u like usuario or usuario_u like usuario ) and contrasenia_u like contra and estado = 1
 	;
 
 	CREATE PROCEDURE usp_registro_insert
